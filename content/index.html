@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Instagram para supermidia</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script> -->
+<script src="js/angular.min.js"></script>
+</head>
+<body ng-app="instaApp">
+  <div class="container tudo">
+    <div class="col-md-12 titulo">
+      <img src="img/titulo-insta.png" alt="">
+    </div>
+    <div class="conteudo" ng-controller="InstaController as ctrl">
+      <!-- Aqui começa o conteúdo da publicação do insta -->
+      <div ng-repeat="pub in ctrl.pubs | limitTo:3">
+        <div class="col-md-4" ng-class="'insta-' + ($index + 1) ">
+          <div class="panel panel-default box-insta">
+            <div class="panel-body conteudo-insta">
+              <div class="col-md-10 sem-padding">
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a href="#"> <img class="media-object foto-perfil"
+                      ng-src="{{pub.user.profile_picture}}" alt="">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <p class="nome-usuario">{{pub.user.username}}</p>
+                    <h4 class="nome-perfil media-heading">{{pub.user.full_name | uppercase}}
+                      ALVES</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 sem-padding tempo">
+                <p class="tempo">{{pub.created_time * 1000|date}}</p>
+              </div>
+              <div class="clear"></div>
+              <div class="col-md-12 foto-publicada sem-padding">
+                <img ng-src="{{pub.images.standard_resolution.url}}" alt="">
+              </div>
+              <div class="col-md-12 icons-post sem-padding">
+                <label> <span
+                  class="glyphicon glyphicon-heart-empty"></span> <span
+                  class="quant-post">{{pub.likes.count}}</span>
+                </label> <label> <span aria-hidden="true"
+                  class="glyphicon glyphicon-comment"></span> <span
+                  class="quant-post">{{pub.comments.count}}</span>
+                </label>
+              </div>
+              <hr>
+              <div class="col-md-12 descricao-post sem-padding">
+                <p>
+                  <span class="nome-usuario"><b>{{pub.caption.from.username}}</b></span>
+                  {{pub.caption.text}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Aqui termina o conteúdo da publicação do insta -->
+    </div>
+
+    <div class="clear"></div>
+    <div class="col-md-12 rodape">
+      <div class="col-md-8 rodape-1">
+        <p>Use a #Araripina em seu Instagram e apareça em todas as
+          Tv’s do grupo Supermídia.TV na cidade de Araripina.</p>
+      </div>
+      <div class="col-md-4 rodape-2">
+        <img src="img/insta.png" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+angular.module('instaApp', [])
+.controller('InstaController', function($http) {
+  var ctrl = this;
+  ctrl.pubs = [];
+  $http({
+      method: 'GET',
+      url: '/data'
+    }).then(function successCallback(response) {
+        // this callback will be called asynchronously
+        // when the response is available
+        ctrl.pubs = response.data.data;
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+          console.log("fail");
+      });
+});
+
+
+</script>
+</html>

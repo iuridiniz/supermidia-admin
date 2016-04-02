@@ -1,0 +1,5 @@
+cron:
+- description: update instagram data
+  url: /tasks/update
+  schedule: every 10 minutes
+

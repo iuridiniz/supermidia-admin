@@ -1,0 +1,112 @@
+.clear {
+	clear: both;
+}
+
+.tudo{
+	background: #006DB2;
+	width: 1280px;
+	height: 720px;
+	margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.container.tudo {
+    padding: 0px;
+}
+
+.titulo img{
+	width: 50%;	
+}
+
+.titulo {
+    text-align: center;
+}
+
+.col-md-12.titulo {
+    padding: 15px;    
+}
+
+
+.insta-1 {
+	background: #E6E7E8;
+	border-top: 10px solid #0F2786;
+}
+.insta-2 {
+	background: #D2D3D5;
+	border-top: 10px solid #8BAD19;
+}
+.insta-3 {
+	background: #BDBFC1;
+	border-top: 10px solid #F7F831;
+}
+
+.rodape {    
+    padding-top: 15px;
+}
+
+.rodape-2 img {
+	width: 50%;
+	float: right;
+}
+
+.rodape-1 p {
+	color: #fff;
+    font-size: 14px;
+    width: 70%;
+}
+
+
+
+.sem-padding {
+    padding: 0px;
+}
+
+.tempo {
+    float: right;
+    color: #aaa;
+    font-size: 13px;
+}
+.nome-perfil {
+    font-weight: bold;
+    color: #006DB2;
+    margin-top: -10px ;
+}
+.nome-usuario {
+    color: #006DB2;
+    font-size: 13px;
+}
+
+.foto-perfil {
+    width: 40px;
+    border-radius: 100% ;
+}
+
+.foto-publicada img {
+    width: 100%;
+}
+.foto-publicada {
+    margin-top: 10px;
+}
+
+.icons-post label {
+    margin-right: 10px;
+}
+
+.icons-post {
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 5px;      
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.descricao-post p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 0px;
+}
+
+.box-insta {
+    margin: 25px !important;
+}
