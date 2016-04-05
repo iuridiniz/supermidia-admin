@@ -1,4 +1,5 @@
 from __builtin__ import classmethod
+import uuid
 import json
 import os
 import random
@@ -127,23 +128,24 @@ class DataPage(webapp2.RequestHandler):
             self.response.write(content)
 
 class Playlist(webapp2.RequestHandler):
-    OFFLINE = "http://192.168.0.116:8080/content/offline.html"
+    OFFLINE = "https://nifty-time-95518.appspot.com/content/offline.html"
     PING = "http://tv.araripina.com.br/service/service/salva/%s"
-    INSTAGRAM = "http://192.168.0.116:8080/content/index.html"
-    MAIN = "http://tv.araripina.com.br/%s"
+    INSTAGRAM = "https://nifty-time-95518.appspot.com/content/index.html"
+    MAIN = "http://tv.araripina.com.br/%s/"
+    UUID = str(uuid.uuid4())
     def get(self, name):
         self.response.headers['Content-Type'] = 'application/json;charset=utf-8'
 
         data = dict()
         data['offline'] = self.OFFLINE
+        data['id'] = self.UUID
         data['ping'] = self.PING % (name,)
         data['playlist'] = playlist = list()
-        playlist.append({'url': self.MAIN % (name,), 'duration': '60'})
-        playlist.append({'url': self.INSTAGRAM, 'duration': '60'})
+        playlist.append({'url': self.MAIN % (name,), 'duration': 60 * 15 })
+        playlist.append({'url': self.INSTAGRAM, 'duration': 60 * 5 })
+
 
         self.response.write(json.dumps(data))
-
-
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
